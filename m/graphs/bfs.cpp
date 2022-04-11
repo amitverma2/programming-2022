@@ -55,12 +55,15 @@ int main () {
     int s;
     cin >> s;
     vector<int> result = graph->BFS(s);
+    bool need_space = false;
     for (int i = 1; i <= n; ++i) {
-      if (i != 1 && i != s)
-        cout << ' '; // Add a spacer before next distance
+      if (need_space)
+          cout << ' '; // Add a space
       if (i != s) {
         cout << result[i];
-      }
+        need_space = true; // now we need space before the print
+      } else
+        need_space = false;
     }
     cout << endl;
     delete graph;
